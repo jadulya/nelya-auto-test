@@ -1,5 +1,18 @@
 plugins {
     id 'java-library'
+    id "io.qameta.allure" version "2.9.6"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+allure {
+    adapter.autoconfigure = true
+    version = '2.13.6'
+    useJUnit5 {
+        version = '2.13.6'
+    }
 }
 
 configurations {
@@ -11,10 +24,12 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.codeborne:selenide:5.23.0'
+    implementation 'com.codeborne:selenide:5.23.3'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
+    implementation 'io.qameta.allure:allure-selenide:2.13.8'
+    implementation "io.qameta.allure:allure-java-commons:2.13.8"
 }
 
 test {

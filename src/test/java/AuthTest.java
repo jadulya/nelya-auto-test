@@ -42,6 +42,10 @@ public class AuthTest {
         step("Проверить, что присутствует кнопка 'Edit profile'", () -> {
             TestPages.mainPage.editProfileButton().shouldBe(visible);
         });
+        step("Выход из аккаунта", () -> {
+            TestPages.mainPage.yourProfileButton().click();
+            $("[data-ga-click='Header, sign out, icon:logout']").click();
+        });
     }
 
     @MethodSource("incorrectCredentials")
